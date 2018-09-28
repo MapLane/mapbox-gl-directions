@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Display driving directions</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='./dist/mapbox-gl-dev.js'></script>
+    <link href='./dist/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<script src='./mapbox-gl-directions/dist/mapbox-gl-directions.js'></script>
+<link rel='stylesheet' href='./mapbox-gl-directions/dist/mapbox-gl-directions.css' type='text/css' />
+<div id='map'></div>
+
+<script>
+    //mapboxgl.accessToken = '<your access token here>';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'http://mapeditor.momenta.works:8000/api/styles/5979455ef6c8302ad80e1f17/5a69da24551f80f8ec536342/publishStyle',
+        center: [116.269359, 39.964510],
+        zoom: 16
+    });
+
+    map.addControl(new MapboxDirections({
+        //accessToken: mapboxgl.accessToken
+    }), 'top-left');
+</script>
+
+</body>
+</html>
